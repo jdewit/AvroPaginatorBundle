@@ -1,0 +1,20 @@
+<ul class="pager">
+    <li>
+        {% if currentPage == 1 %}
+            <a href="#" class="btn disabled"><i class="icon-arrow-left"></i> Prev</a>
+        {% else %}
+            {% set params =  {'page': currentPage - 1} | merge(routeParams) %}
+            <a href="{{ path(route, params) }}" class="btn"><i class="icon-arrow-left"></i> Prev</a>
+        {% endif %}
+    </li>
+    <li class="page-number">{{ currentPage }}</li>
+    <li>
+        {% if currentPage == maxPage %}
+            <a href="#" class="btn disabled">Next <i class="icon-arrow-right"></i></a>
+        {% else %}
+            {% set params =  {'page': currentPage + 1} | merge(routeParams) %}
+            <a href="{{ path(route, params) }}" class="btn">Next <i class="icon-arrow-right"></i></a>
+        {% endif %}
+    </li>
+</ul>
+

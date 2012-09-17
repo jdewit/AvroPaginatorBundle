@@ -1,0 +1,47 @@
+<div class="{{ containerClass }}">
+    <ul>
+        {% if minPage != 1 %}
+            {% set params = routeParams | merge({'page': firstPage}) %}
+            <li>
+                <a href="{{ path(route, params) }}">{{ firstPageText }}</a>
+            </li>
+        {% endif %}
+
+        {% set params = routeParams | merge({'page': prevPage}) %}
+        {% if currentPage > 1 %}
+            <li>
+                <a href="{{ path(route, params) }}">{{ prevPageText }}</a>
+            </li>
+        {% else %}
+            <li class="{{ disabledClass }}">
+                <a href="#">{{ prevPageText }}</a>
+            </li>
+        {% endif %}
+
+        {% for page in minPage..maxPage %}
+            {% set params = routeParams | merge({'page': page}) %}
+            <li {% if page == currentPage %}class="{{ currentClass }}"{% endif %}>
+                <a href="{{ path(route, params) }}">{{ page }}</a>
+            </li>
+        {% endfor %}
+
+        {% set params = routeParams | merge({'page': nextPage}) %}
+        {% if currentPage < lastPage %}
+            <li>
+                <a href="{{ path(route, params) }}">{{ nextPageText }}</a>
+            </li>
+        {% else %}
+            <li class="{{ disabledClass }}">
+                <a href="#">{{ nextPageText }}</a>
+            </li>
+        {% endif %}
+
+        {% if maxPage != lastPage %}
+            {% set params = routeParams | merge({'page': lastPage}) %}
+            <li>
+                <a href="{{ path(route, params) }}">{{ lastPageText }}</a>
+            </li>
+        {% endif %}
+    </ul>
+</div>
+

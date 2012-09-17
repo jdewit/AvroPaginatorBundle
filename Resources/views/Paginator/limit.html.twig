@@ -1,0 +1,12 @@
+<div id="avroLimitContainer">
+    <span class="btn-group dropup">
+        <a data-toggle="dropdown" class="btn dropdown-toggle" href="#"><i class="icon-list"></i> <span class="hidden-phone">Show:</span> {{ limit }} <span class="caret"></span></a>
+        <ul class="dropdown-menu pull-right">
+            {% for step in limitSteps %}
+                {% set rParams =  routeParams | merge({'limit': step}) %}
+                <li><a href="{{ path(route, rParams) }}">{{ step }}</a></li>
+            {% endfor %}
+        </ul>
+    </span>
+</div>
+

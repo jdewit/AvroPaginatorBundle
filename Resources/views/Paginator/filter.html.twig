@@ -1,0 +1,12 @@
+<span id="avroPaginatorFilter">
+    <span class="btn-group" style="pading-top: 6px;">
+        <a href="#" class="btn dropdown-toggle" data-toggle="dropdown"><i class="icon-filter"></i> <span class="hidden-phone">{{ filter ? filters[filter]['label'] : 'Filter' }}</span> <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            {% for key, val in filters %}
+                {% set params = routeParams | merge({'filter': key, 'filterValue': val.value}) %}
+                <li><a href="{{ path(route, params) }}"><i class=""></i> {{ val.label }}</a></li>
+            {% endfor %}
+        </ul>
+    </span>
+</span>
+
